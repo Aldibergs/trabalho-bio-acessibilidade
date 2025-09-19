@@ -5,6 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Player de Áudio e Vídeo Acessível</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Deixar o vídeo responsivo */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* proporção 16:9 */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
 <body>
 
@@ -14,12 +31,6 @@
         <h1 tabindex="0">Trabalho de Biologia</h1>
         <h1 tabindex="0">Células Procariontes</h1>
         <div class="info" tabindex="0">Bactéria Gram-positiva</div>
-
-        <!-- Acessibilidade 
-        <div class="accessibility" aria-label="Recursos de acessibilidade">
-            <span class="accessibility-icon audio" title="Áudio descrição" aria-label="Ícone de áudio descrição" tabindex="0"></span>
-            <span class="accessibility-icon libras" title="Vídeo em Libras" aria-label="Ícone de vídeo em Libras" tabindex="0"></span>
-        </div>-->
 
         <!-- Player de áudio -->
         <div class="audio-player" role="region" aria-label="Player de áudio descrição">
@@ -52,25 +63,23 @@
         <div class="info" tabindex="0">Acesse o conteúdo em Libras para inclusão!</div>
         <div class="video-player" role="region" aria-label="Player de vídeo em Libras">
             <strong tabindex="0">Vídeo em Libras:</strong>
-            <video id="videoPlayer" controls poster="https://cdn-icons-png.flaticon.com/512/3062/3062634.png" aria-label="Vídeo em Libras sobre célula procarionte">
-                <source src="midias/video/lv_0_20250918224941.mp4" type="video/mp4">
-                Seu navegador não suporta o elemento de vídeo.
-            </video>
-            <div class="video-controls">
-                <button onclick="playVideo()" aria-label="Reproduzir vídeo em Libras">▶️ Reproduzir</button>
-                <button onclick="pauseVideo()" aria-label="Pausar vídeo em Libras">⏸ Pausar</button>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/TJUIeMxNgGI" 
+                        title="Vídeo em Libras sobre célula procarionte" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                        tabindex="0">
+                </iframe>
             </div>
         </div>
     </div>
 
     <script>
         const audio = document.getElementById('audioPlayer');
-        const video = document.getElementById('videoPlayer');
 
         function playAudio() { audio.play(); }
         function pauseAudio() { audio.pause(); }
-        function playVideo() { video.play(); }
-        function pauseVideo() { video.pause(); }
 
         // Autoplay para deficientes visuais (fallback em caso de bloqueio)
         window.addEventListener('DOMContentLoaded', () => {
