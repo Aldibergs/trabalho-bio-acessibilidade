@@ -1,0 +1,122 @@
+/* Botões grandes para controles de áudio/vídeo */
+.audio-controls button, .video-controls button {
+    font-size: 1.4rem;
+    padding: 16px 32px;
+    border-radius: 12px;
+    margin: 0 10px 10px 0;
+    min-width: 120px;
+    min-height: 56px;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+}
+body {
+    background: linear-gradient(120deg, #e0ffe0 0%, #b3e6ff 100%);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #2d4739;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.container {
+    background: rgba(255,255,255,0.95);
+    border-radius: 20px;
+    box-shadow: 0 4px 32px rgba(44, 62, 80, 0.18);
+    padding: 36px 28px;
+    max-width: 480px;
+    text-align: center;
+    margin-bottom: 32px;
+    border: 2px solid #b3e6ff;
+}
+
+h1 {
+    font-size: 2.2rem;
+    margin-bottom: 18px;
+    color: #1565c0;
+    letter-spacing: 1px;
+}
+
+.audio-player, .video-player {
+    margin: 24px 0;
+}
+
+audio, video {
+    width: 100%;
+    outline: none;
+    border-radius: 12px;
+    background: #e0f7fa;
+    box-shadow: 0 2px 12px rgba(44, 62, 80, 0.10);
+    margin-bottom: 8px;
+}
+
+.info {
+    font-size: 1.15rem;
+    color: #388e3c;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.audio-controls, .video-controls {
+    margin-bottom: 12px;
+}
+
+.leaf {
+    width: 56px;
+    height: 56px;
+    background: url('https://cdn.pixabay.com/photo/2016/03/31/19/56/bacteria-1294253_1280.png') no-repeat center/contain;
+    display: inline-block;
+    margin-bottom: 16px;
+}
+
+.accessibility {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.accessibility-icon {
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    background-size: contain;
+}
+
+.accessibility-icon.audio {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/727/727240.png');
+}
+.accessibility-icon.libras {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/3062/3062634.png');
+}
+
+button {
+    background: #1565c0;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 0 6px;
+    transition: background 0.2s;
+}
+button:hover, button:focus {
+    background: #388e3c;
+    outline: none;
+}
+
+@media (max-width: 600px) {
+    .container {
+        max-width: 98vw;
+        padding: 18px 4vw;
+    }
+    h1 {
+        font-size: 1.3rem;
+    }
+    audio, video {
+        max-width: 98vw;
+    }
+}

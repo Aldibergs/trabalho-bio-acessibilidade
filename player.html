@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player de Áudio e Vídeo Acessível</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Container principal: áudio como prioridade -->
+    <div class="container" role="region" aria-label="Conteúdo principal: célula procarionte">
+        <span class="leaf" aria-label="Imagem ilustrativa de célula procarionte bactéria gram-positiva" tabindex="0"></span>
+        <h1 tabindex="0">Trabalho de Biologia</h1>
+        <h1 tabindex="0">Células Procariontes</h1>
+        <div class="info" tabindex="0">Bactéria Gram-positiva</div>
+
+        <!-- Acessibilidade 
+        <div class="accessibility" aria-label="Recursos de acessibilidade">
+            <span class="accessibility-icon audio" title="Áudio descrição" aria-label="Ícone de áudio descrição" tabindex="0"></span>
+            <span class="accessibility-icon libras" title="Vídeo em Libras" aria-label="Ícone de vídeo em Libras" tabindex="0"></span>
+        </div>-->
+
+        <!-- Player de áudio -->
+        <div class="audio-player" role="region" aria-label="Player de áudio descrição">
+            <strong tabindex="0">Áudio descrição:</strong>
+            <audio id="audioPlayer" controls aria-label="Áudio descrição sobre célula procarionte" tabindex="0">
+                <source src="../midias/audio/audio.mp3" type="audio/mpeg">
+                Seu navegador não suporta o elemento de áudio.
+            </audio>
+            <div class="audio-controls">
+                <button onclick="playAudio()" aria-label="Reproduzir áudio descrição" tabindex="0">▶️ Reproduzir</button>
+                <button onclick="pauseAudio()" aria-label="Pausar áudio descrição" tabindex="0">⏸ Pausar</button>
+            </div>
+            <div class="info" tabindex="0">
+                <span aria-label="Instrução para navegação por teclado">
+                    Use Tab para navegar entre os controles e Enter para ativar.
+                </span>
+            </div>
+            <div class="info" tabindex="0">
+                <span aria-label="Descrição do conteúdo do áudio">
+                    Este áudio descreve as principais características das células procariontes, focando em bactérias gram-positivas.
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Container secundário: vídeo Libras -->
+    <div class="container">
+        <span class="leaf" aria-hidden="true"></span>
+        <h1 tabindex="0">Representação em Libras</h1>
+        <div class="info" tabindex="0">Acesse o conteúdo em Libras para inclusão!</div>
+        <div class="video-player" role="region" aria-label="Player de vídeo em Libras">
+            <strong tabindex="0">Vídeo em Libras:</strong>
+            <video id="videoPlayer" controls poster="https://cdn-icons-png.flaticon.com/512/3062/3062634.png" aria-label="Vídeo em Libras sobre célula procarionte">
+                <source src="../midias/video/lv_0_20250918224941.mp4" type="video/mp4">
+                Seu navegador não suporta o elemento de vídeo.
+            </video>
+            <div class="video-controls">
+                <button onclick="playVideo()" aria-label="Reproduzir vídeo em Libras">▶️ Reproduzir</button>
+                <button onclick="pauseVideo()" aria-label="Pausar vídeo em Libras">⏸ Pausar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const audio = document.getElementById('audioPlayer');
+        const video = document.getElementById('videoPlayer');
+
+        function playAudio() { audio.play(); }
+        function pauseAudio() { audio.pause(); }
+        function playVideo() { video.play(); }
+        function pauseVideo() { video.pause(); }
+
+        // Autoplay para deficientes visuais (fallback em caso de bloqueio)
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                if (audio.paused) {
+                    audio.play().catch(() => console.log('Autoplay bloqueado'));
+                }
+            }, 500);
+        });
+    </script>
+
+</body>
+</html>
